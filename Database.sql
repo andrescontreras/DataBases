@@ -1,5 +1,6 @@
 /*
 Proyecto de Bases de datos 2016-30
+Pablo no vino HOY
 Realizado por:
   Pablo Ariza
   Alejandro Castro
