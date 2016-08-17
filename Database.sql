@@ -21,13 +21,13 @@ CREATE TABLE continente(
 CREATE TABLE pais (
   cod_continente numeric (3,0),
   cod_pais numeric (3,0),
-  nombre varchar (20) NOT NULL,
+  nombre varchar (20) NOT NULL UNIQUE,
   PRIMARY KEY (cod_continente,cod_pais),
   FOREIGN KEY (cod_continente) REFERENCES continente(cod_continente)
 );
 CREATE TABLE moneda(
   id_moneda numeric (3,0) PRIMARY KEY,
-  nombre varchar (10) NOT NULL
+  nombre varchar (10) NOT NULL UNIQUE
 );
 CREATE TABLE monedaXpais(
   id_moneda numeric (3,0),
