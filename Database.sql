@@ -42,11 +42,11 @@ CREATE TABLE tasas(
   id_moneda_origen numeric (3,0),
   id_moneda_destino numeric (3,0),
   fecha date,
-  tasa_cambio numeric (5,2),
+  tasa_cambio numeric (20,10),
   PRIMARY KEY (id_moneda_origen,id_moneda_destino,fecha),
   FOREIGN KEY (id_moneda_origen) REFERENCES moneda(id_moneda),
   FOREIGN KEY (id_moneda_destino) REFERENCES moneda(id_moneda),
-  check (tasa_cambio < 0)
+  check (tasa_cambio > 0)
 );
 
 /* Insercion de datos en las tablas */
@@ -151,13 +151,13 @@ INSERT INTO moneda values (29,'Baht');
 INSERT INTO moneda values (30,'Yen');
 INSERT INTO moneda values (31,'Riel');
 INSERT INTO moneda values (32,'Rupia Hindu');
-INSERT INTO moneda values (33,'Franco Malgache');
+INSERT INTO moneda values (33,'Ariary Malgache');
 INSERT INTO moneda values (34,'Cedi');
 INSERT INTO moneda values (35,'Libra Egipcia');
 INSERT INTO moneda values (36,'Naira');
-INSERT INTO moneda values (37,'Biir Etiope');
+INSERT INTO moneda values (37,'Birr Etiope');
 INSERT INTO moneda values (38,'Chelin Keniata');
-INSERT INTO moneda values (39,'Franco de Mali');
+INSERT INTO moneda values (39,'Franco CFA Occidental');
 INSERT INTO moneda values (40,'Dirham Marroqui');
 INSERT INTO moneda values (41,'Metical');
 INSERT INTO moneda values (42,'Dinar Tunecino');
@@ -222,6 +222,92 @@ INSERT INTO monedaXpais values (40,5,8);
 INSERT INTO monedaXpais values (41,5,9);
 INSERT INTO monedaXpais values (42,5,10);
 
+INSERT INTO tasas values (1,2,to_date('18/08/2016','DD/MM/YYYY'),0.862051);
+INSERT INTO tasas values (1,3,to_date('18/08/2016','DD/MM/YYYY'),9.47313);
+INSERT INTO tasas values (1,4,to_date('18/08/2016','DD/MM/YYYY'),1.08332);
+INSERT INTO tasas values (1,5,to_date('18/08/2016','DD/MM/YYYY'),1.13446);
+INSERT INTO tasas values (1,6,to_date('18/08/2016','DD/MM/YYYY'),1.4498);
+INSERT INTO tasas values (1,7,to_date('18/08/2016','DD/MM/YYYY'),20.6258);
+INSERT INTO tasas values (1,8,to_date('18/08/2016','DD/MM/YYYY'),25.9737);
+INSERT INTO tasas values (1,9,to_date('18/08/2016','DD/MM/YYYY'),143.978);
+INSERT INTO tasas values (1,10,to_date('18/08/2016','DD/MM/YYYY'),1.13466);
+INSERT INTO tasas values (1,11,to_date('18/08/2016','DD/MM/YYYY'),3303.32);
+INSERT INTO tasas values (1,12,to_date('18/08/2016','DD/MM/YYYY'),11.2876);
+INSERT INTO tasas values (1,13,to_date('19/08/2016','DD/MM/YYYY'),745.523);
+INSERT INTO tasas values (1,14,to_date('19/08/2016','DD/MM/YYYY'),3.67574);
+INSERT INTO tasas values (1,15,to_date('19/08/2016','DD/MM/YYYY'),1.47842);
+INSERT INTO tasas values (1,16,to_date('19/08/2016','DD/MM/YYYY'),1.559213);
+INSERT INTO tasas values (1,17,to_date('19/08/2016','DD/MM/YYYY'),118.969);
+INSERT INTO tasas values (1,18,to_date('19/08/2016','DD/MM/YYYY'),3.5988);
+INSERT INTO tasas values (1,19,to_date('19/08/2016','DD/MM/YYYY'),1.46055);
+INSERT INTO tasas values (1,20,to_date('19/08/2016','DD/MM/YYYY'),2.83858);
+INSERT INTO tasas values (1,21,to_date('19/08/2016','DD/MM/YYYY'),2.46125);
+INSERT INTO tasas values (1,22,to_date('19/08/2016','DD/MM/YYYY'),8.85868);
+INSERT INTO tasas values (1,23,to_date('19/08/2016','DD/MM/YYYY'),7.52367);
+INSERT INTO tasas values (1,24,to_date('19/08/2016','DD/MM/YYYY'),52.5244);
+INSERT INTO tasas values (1,25,to_date('19/08/2016','DD/MM/YYYY'),1257.53);
+INSERT INTO tasas values (1,26,to_date('19/08/2016','DD/MM/YYYY'),1.52002);
+INSERT INTO tasas values (1,27,to_date('19/08/2016','DD/MM/YYYY'),9193.02);
+INSERT INTO tasas values (1,28,to_date('19/08/2016','DD/MM/YYYY'),4.52717);
+INSERT INTO tasas values (1,29,to_date('19/08/2016','DD/MM/YYYY'),39.2105);
+INSERT INTO tasas values (1,30,to_date('19/08/2016','DD/MM/YYYY'),113.767);
+INSERT INTO tasas values (1,31,to_date('19/08/2016','DD/MM/YYYY'),4656.39);
+INSERT INTO tasas values (1,32,to_date('19/08/2016','DD/MM/YYYY'),75.8179);
+INSERT INTO tasas values (1,33,to_date('19/08/2016','DD/MM/YYYY'),3445.47);
+INSERT INTO tasas values (1,34,to_date('19/08/2016','DD/MM/YYYY'),4.47499);
+INSERT INTO tasas values (1,35,to_date('19/08/2016','DD/MM/YYYY'),10.0638);
+INSERT INTO tasas values (1,36,to_date('19/08/2016','DD/MM/YYYY'),364.67);
+INSERT INTO tasas values (1,37,to_date('19/08/2016','DD/MM/YYYY'),25.1279);
+INSERT INTO tasas values (1,38,to_date('19/08/2016','DD/MM/YYYY'),114.891);
+INSERT INTO tasas values (1,39,to_date('19/08/2016','DD/MM/YYYY'),655.957);
+INSERT INTO tasas values (1,40,to_date('19/08/2016','DD/MM/YYYY'),10.9528);
+INSERT INTO tasas values (1,41,to_date('19/08/2016','DD/MM/YYYY'),81.6616);
+INSERT INTO tasas values (1,42,to_date('19/08/2016','DD/MM/YYYY'),2.48063);
+INSERT INTO tasas values (2,1,to_date('19/08/2016','DD/MM/YYYY'),1.1596);
+INSERT INTO tasas values (2,19,to_date('19/08/2016','DD/MM/YYYY'),1.68778);
+INSERT INTO tasas values (3,1,to_date('19/08/2016','DD/MM/YYYY'),0.105562);
+INSERT INTO tasas values (4,1,to_date('18/08/2016','DD/MM/YYYY'),0.923088);
+INSERT INTO tasas values (5,1,to_date('18/08/2016','DD/MM/YYYY'),0.881477);
+INSERT INTO tasas values (5,19,to_date('19/08/2016','DD/MM/YYYY'),1.29549);
+INSERT INTO tasas values (6,1,to_date('18/08/2016','DD/MM/YYYY'),0.689752);
+INSERT INTO tasas values (7,1,to_date('18/08/2016','DD/MM/YYYY'),0.0484829);
+INSERT INTO tasas values (8,1,to_date('18/08/2016','DD/MM/YYYY'),0.0385005);
+INSERT INTO tasas values (9,1,to_date('18/08/2016','DD/MM/YYYY'),0.00694549);
+INSERT INTO tasas values (10,1,to_date('18/08/2016','DD/MM/YYYY'),0.881318);
+INSERT INTO tasas values (11,1,to_date('18/08/2016','DD/MM/YYYY'),0.000302726);
+INSERT INTO tasas values (12,1,to_date('18/08/2016','DD/MM/YYYY'),0.0885925);
+INSERT INTO tasas values (13,1,to_date('19/08/2016','DD/MM/YYYY'),0.00134134);
+INSERT INTO tasas values (14,1,to_date('19/08/2016','DD/MM/YYYY'),0.272054);
+INSERT INTO tasas values (15,1,to_date('19/08/2016','DD/MM/YYYY'),0.676399);
+INSERT INTO tasas values (16,1,to_date('19/08/2016','DD/MM/YYYY'),0.641384);
+INSERT INTO tasas values (17,1,to_date('19/08/2016','DD/MM/YYYY'),0.0084056);
+INSERT INTO tasas values (18,1,to_date('19/08/2016','DD/MM/YYYY'),0.27787);
+INSERT INTO tasas values (19,1,to_date('19/08/2016','DD/MM/YYYY'),0.68467);
+INSERT INTO tasas values (19,2,to_date('19/08/2016','DD/MM/YYYY'),0.59250);
+INSERT INTO tasas values (19,5,to_date('19/08/2016','DD/MM/YYYY'),0.77191);
+INSERT INTO tasas values (20,1,to_date('19/08/2016','DD/MM/YYYY'),0.352289);
+INSERT INTO tasas values (21,1,to_date('19/08/2016','DD/MM/YYYY'),0.406298);
+INSERT INTO tasas values (22,1,to_date('19/08/2016','DD/MM/YYYY'),0.112884);
+INSERT INTO tasas values (23,1,to_date('19/08/2016','DD/MM/YYYY'),0.132914);
+INSERT INTO tasas values (24,1,to_date('19/08/2016','DD/MM/YYYY'),0.0190388);
+INSERT INTO tasas values (25,1,to_date('19/08/2016','DD/MM/YYYY'),0.000795208);
+INSERT INTO tasas values (26,1,to_date('19/08/2016','DD/MM/YYYY'),0.657888);
+INSERT INTO tasas values (27,1,to_date('19/08/2016','DD/MM/YYYY'),0.00010877);
+INSERT INTO tasas values (28,1,to_date('19/08/2016','DD/MM/YYYY'),0.220888);
+INSERT INTO tasas values (29,1,to_date('19/08/2016','DD/MM/YYYY'),0.0255034);
+INSERT INTO tasas values (30,1,to_date('19/08/2016','DD/MM/YYYY'),0.00878992);
+INSERT INTO tasas values (31,1,to_date('19/08/2016','DD/MM/YYYY'),0.0002147);
+INSERT INTO tasas values (32,1,to_date('19/08/2016','DD/MM/YYYY'),0.0131895);
+INSERT INTO tasas values (33,1,to_date('19/08/2016','DD/MM/YYYY'),0.00029023);
+INSERT INTO tasas values (34,1,to_date('19/08/2016','DD/MM/YYYY'),0.223464);
+INSERT INTO tasas values (35,1,to_date('19/08/2016','DD/MM/YYYY'),0.0993664);
+INSERT INTO tasas values (36,1,to_date('19/08/2016','DD/MM/YYYY'),0.0027422);
+INSERT INTO tasas values (37,1,to_date('19/08/2016','DD/MM/YYYY'),0.0397965);
+INSERT INTO tasas values (38,1,to_date('19/08/2016','DD/MM/YYYY'),0.00870387);
+INSERT INTO tasas values (39,1,to_date('19/08/2016','DD/MM/YYYY'),0.00152449);
+INSERT INTO tasas values (40,1,to_date('19/08/2016','DD/MM/YYYY'),0.0913005);
+INSERT INTO tasas values (41,1,to_date('19/08/2016','DD/MM/YYYY'),0.0122457);
+INSERT INTO tasas values (42,1,to_date('19/08/2016','DD/MM/YYYY'),0.403123);
 
 commit;
 /*VISTAS UTILES*/
@@ -242,7 +328,8 @@ select *
 from monedaPais left outer join moneda
 using(id_moneda)
 );
-
+select * from moneda
+ORDER by id_moneda;
 /* Punto 1: Monedas por continente */
 
 
