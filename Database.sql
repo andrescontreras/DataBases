@@ -336,8 +336,15 @@ ORDER by id_moneda;
 
 
 /* Punto 2: Moneda con tasas de cambio en todas las monedas */
-
-
+select id_moneda, nombre
+from moneda M
+where not exists((select id_moneda
+                    from moneda
+                    where id_moneda <> M.id_moneda)
+                  minus
+                  (select id_moneda 
+                    from tasas T
+                    where T.id_moneda_origen = M.id_moneda))
 
 /* Punto 3: Monedas que faltan tasas de cambio respecto a las demas monedas */
 
