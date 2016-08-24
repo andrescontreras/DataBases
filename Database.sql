@@ -347,7 +347,11 @@ select * from moneda
 ORDER by id_moneda;
 /* Punto 1: Monedas por continente */
 /*MONEDAS: Rublo Ruso y Dong deben aparecer en 0 ya que no fueron asignadas a ningun pais*/
+SELECT ID_MONEDA,COD_CONTINENTE ,SUM(+1) FROM MONEDAXPAIS
+GROUP BY ID_MONEDA,COD_CONTINENTE
 
+SELECT * FROM MONEDAXPAIS
+WHERE ID_MONEDA = 7
 
 /* Punto 2: Moneda con tasas de cambio en todas las monedas */
 select id_moneda, nombre
