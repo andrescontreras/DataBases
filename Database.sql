@@ -56,14 +56,14 @@ INSERT INTO continente values (1,'Europa');
 INSERT INTO continente values (2,'America');
 INSERT INTO continente values (3,'Oceania');
 INSERT INTO continente values (4, 'Asia');
-INSERT INTO continente values (5,'Africa'); 
+INSERT INTO continente values (5,'Africa');
 
 /*PAISES EUROPA*/
 INSERT INTO pais values (1,1,'Inglaterra');
 INSERT INTO pais values (1,2,'Alemania');
 INSERT INTO pais values (1,3,'Portugal');
 INSERT INTO pais values (1,4,'Italia');
-INSERT INTO pais values (1,5,'España');
+INSERT INTO pais values (1,5,'Espaï¿½a');
 INSERT INTO pais values (1,6,'Suecia');
 INSERT INTO pais values (1,7,'Suiza');
 INSERT INTO pais values (1,8,'Monaco');
@@ -132,7 +132,7 @@ INSERT INTO moneda values (10,'Balboa');
 INSERT INTO moneda values (11,'Peso Colombiano');
 INSERT INTO moneda values (12,'Bolivar');
 INSERT INTO moneda values (13,'Peso Chileno');
-INSERT INTO moneda values (14,'Real Brasileño');
+INSERT INTO moneda values (14,'Real Brasileï¿½o');
 INSERT INTO moneda values (15,'Dolar Australiano');
 INSERT INTO moneda values (16,'Dolar Neozelandes');
 INSERT INTO moneda values (17,'Vatu');
@@ -161,6 +161,9 @@ INSERT INTO moneda values (39,'Franco CFA Occidental');
 INSERT INTO moneda values (40,'Dirham Marroqui');
 INSERT INTO moneda values (41,'Metical');
 INSERT INTO moneda values (42,'Dinar Tunecino');
+/*MONEDA QUE NO ESTA ASIGNADA A NINGUN PAIS*/
+INSERT INTO moneda values (43,'Rublo Ruso');
+INSERT INTO moneda values (44,'Dong');
 
 /*Monedas por pais EUROPA*/
 INSERT INTO monedaXpais values (2,1,1);
@@ -310,6 +313,16 @@ INSERT INTO tasas values (39,1,to_date('19/08/2016','DD/MM/YYYY'),0.00152449);
 INSERT INTO tasas values (40,1,to_date('19/08/2016','DD/MM/YYYY'),0.0913005);
 INSERT INTO tasas values (41,1,to_date('19/08/2016','DD/MM/YYYY'),0.0122457);
 INSERT INTO tasas values (42,1,to_date('19/08/2016','DD/MM/YYYY'),0.403123);
+/*VALORES PARA DIFERENTES FECHAS*/
+INSERT INTO tasas values (1,2,to_date('24/08/2016','DD/MM/YYYY'),0.850639);
+INSERT INTO tasas values (1,3,to_date('24/08/2016','DD/MM/YYYY'),9.46049);
+INSERT INTO tasas values (1,4,to_date('24/08/2016','DD/MM/YYYY'),1.08872);
+INSERT INTO tasas values (2,1,to_date('24/08/2016','DD/MM/YYYY'),1.17559);
+INSERT INTO tasas values (3,1,to_date('24/08/2016','DD/MM/YYYY'),0.105703);
+INSERT INTO tasas values (4,1,to_date('24/08/2016','DD/MM/YYYY'),0.918514);
+INSERT INTO tasas values (15,16,to_date('24/08/2016','DD/MM/YYYY'),1.04112);
+INSERT INTO tasas values (16,15,to_date('24/08/2016','DD/MM/YYYY'),0.960501);
+
 
 commit;
 /*VISTAS UTILES*/
@@ -317,7 +330,7 @@ DROP VIEW continentePais;
 DROP VIEW monedaPais;
 DROP VIEW paisMonedaNombres;
 CREATE VIEW continentePais as(
-select descripcion, nombre, cod_pais 
+select descripcion, nombre, cod_pais
 from continente natural join pais
 );
 CREATE VIEW monedaPais as(
@@ -326,13 +339,14 @@ from MONEDAXPAIS natural right outer join pais
 where id_pais = cod_pais
 );
 CREATE VIEW paisMonedaNombres as(
-select * 
+select *
 from monedaPais left outer join moneda
 using(id_moneda)
 );
 select * from moneda
 ORDER by id_moneda;
 /* Punto 1: Monedas por continente */
+/*MONEDAS: Rublo Ruso y Dong deben aparecer en 0 ya que no fueron asignadas a ningun pais*/
 
 
 /* Punto 2: Moneda con tasas de cambio en todas las monedas */
@@ -342,12 +356,16 @@ where not exists((select id_moneda
                     from moneda
                     where id_moneda <> M.id_moneda)
                   minus
-                  (select id_moneda 
+                  (select id_moneda_destino
                     from tasas T
-                    where T.id_moneda_origen = M.id_moneda))
+                    where T.id_moneda_origen = M.id_moneda));
 
 /* Punto 3: Monedas que faltan tasas de cambio respecto a las demas monedas */
-
+/*La Mayoria de monedas le faltan tasas de cambio con las demas monedas
+  EXCEPTO EL EURO (NO DEBE APARECER EL EURO EN ESTA CONSULTA)*/
 
 
 /* Punto 4: Porcentaje de aumento o disminucion de la tasa de cambio de cada combinacion */
+/*Hay tasas de cambio con fechas diferentes
+  ->EURO CON LA MONEDAS PRIMERAS
+  ->DOLAR AUSTRALIANO con DOLAR NEOZELANDES*/ 
